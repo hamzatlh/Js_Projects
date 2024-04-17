@@ -9,7 +9,7 @@ body {
     background-image: url("./images/image-count.jpg");
     background-size: cover ;
     background-position: center center;
-    font-family: "popins", sans-serif;
+    font-family: "poppins", sans-serif;
     min-height: 100vh;
     margin: 0;
     display: flex;
@@ -23,6 +23,23 @@ body {
 }
 
 h1 {
-    font-size: 3rem;
-    margin-top: -30rem;
+    font-weight: normal;
+    font-size: 4rem;
+    margin-top: -20rem;
+}
+
+.big-text {
+    font-size: 4rem;
+    font-weight: bold;
+    line-height: 1;
+    margin: 0 2rem;
+}
+
+.countdown-el{
+    text-align: center;
+}
+
+.countdown-el span {
+    font-size: 1.3rem;
+    margin: 1rem;
 }
