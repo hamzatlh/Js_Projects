@@ -6,7 +6,7 @@ const quizData = [
         correct : "a"
     },
     {
-        question : "Est ce que oussama est un mangol ?",
+        question : "Est ce que oussama est un mangol?",
         a : "vrai",
         b : "faux",
         correct : "a"
