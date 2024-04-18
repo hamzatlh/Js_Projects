@@ -35,6 +35,10 @@ ul {
     padding: 0;
 }
 
+ul li label{
+    cursor: pointer;
+}
+
 button{
     background-color: #f9a826;
     font-family: inherit;
@@ -52,6 +56,8 @@ button:hover {
 }
 
 h2 {
+    padding: 1rem;
+    text-align: center;
     margin: 0;
 }
 
