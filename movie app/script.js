@@ -1,20 +1,28 @@
 const APIURL = "https://api.themoviedb.org/3/discover/movie?api_key=807f396a3cc446b64fa86103e283d649";
 const IMGPATH = "https://image.tmdb.org/t/p/w500/";
 
-const SEARCHAPI = "https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1?api_key=807f396a3cc446b64fa86103e283d649&query=";
+const SEARCHAPI = "https://api.themoviedb.org/3/search/movie?api_key=807f396a3cc446b64fa86103e283d649&query=";
+
+const main = document.getElementById('main');
+const search = document.getElementById('search');
+const form = document.getElementById('form');
+
+getMovie(APIURL);
 
 
-async function getMovie() {
-    const resp = await fetch(APIURL);
+async function getMovie(url) {
+    const resp = await fetch(url);
     const respData = await resp.json();
-    const main = document.querySelector('main');
-    const form = document.querySelector('form');
-    const search = document.querySelector('search');
 
-    // console.log(respData);
+    showMovies(respData.results);
     
-    respData.results.forEach(movie => {
-        const {title, poster_path, vote_average} = movie;
+    // return respData;
+}
+
+function showMovies(movies) {
+    main.innerHTML = '';
+    movies.forEach(movie => {
+        const {title, poster_path, vote_average, overview} = movie;
         
         const movieEl = document.createElement('div');
         movieEl.classList.add('movie');
@@ -25,12 +33,11 @@ async function getMovie() {
         <h3>${title}</h3>
         <span class="${getClassByRate(vote_average)}">${vote_average}</span>
         </div>
+        <div class="overview"><h3>Overview : </h3>${overview}</div>
         `;
         main.appendChild(movieEl);
         
     });
-    
-    return respData;
 }
 
 function getClassByRate(vote) {
@@ -50,10 +57,9 @@ form.addEventListener('submit', (e) => {
     const searchTerm = search.value;
     
     if(searchTerm) {
-        getMovie(searchTerm);
-        
-        main.innerHTML = '';
+        getMovie(SEARCHAPI + searchTerm);
+        search.value = '';
     }
 });
 
-getMovie();
+// getMovie(APIURL);
