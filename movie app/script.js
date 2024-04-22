@@ -62,4 +62,5 @@ form.addEventListener('submit', (e) => {
     }
 });
 
+
 // getMovie(APIURL);
